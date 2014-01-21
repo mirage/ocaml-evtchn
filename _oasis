@@ -1,0 +1,48 @@
+OASISFormat: 0.3
+Name:        xen-evtchn
+Version:     0.9.8
+Synopsis:    Xen event channel bindings
+Authors:     Vincent Hanquez, Anil Madhavapeddy, David Scott, Jonathan Ludlam
+License:     LGPL-2.1 with OCaml linking exception
+Plugins:     META (0.3)
+BuildTools:  ocamlbuild
+
+Library xen_evtchn
+  CompiledObject:     best
+  Path:               lib
+  Findlibname:        xen-evtchn
+  Modules:            Eventchn, Generation
+  BuildDepends:       unix, lwt, bigarray
+
+Library xen_evtchn_unix
+  CompiledObject:     best
+  Path:               lib
+  Findlibname:        unix
+  Findlibparent:      xen_evtchn
+  Modules:            Eventchn_dummy # to convince the build tools to make the package
+  CSources:           eventchn_stubs.c
+  CCLib:              -L/usr/lib/xen-4.2/lib -lxenctrl
+  CCOpt:              -Wno-unused-function -g -ggdb
+  BuildDepends:       unix, lwt, lwt.unix, bigarray
+
+Library xen_evtchn_unix_activations
+  CompiledObject:     best
+  Path:               lib
+  Findlibname:        activations
+  Findlibparent:      xen_evtchn_unix
+  Modules:            Activations 
+  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn.unix
+
+Executable linking
+  Build$:             flag(tests)
+  CompiledObject:     best
+  Path:               lib_test
+  MainIs:             main.ml
+  Custom:             true
+  Install:            false
+  BuildDepends:       xen-evtchn, xen-evtchn.unix, xen-evtchn.unix.activations
+
+Test portable
+  Command:            ./linking.native
+  Run:                true
+
