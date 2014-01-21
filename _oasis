@@ -30,7 +30,7 @@ Library xen_evtchn_unix_activations
   Path:               lib
   Findlibname:        activations
   Findlibparent:      xen_evtchn_unix
-  Modules:            Activations 
+  Modules:            Unix_activations 
   BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn.unix
 
 Executable linking
