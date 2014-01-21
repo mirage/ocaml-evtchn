@@ -53,4 +53,4 @@
 <lib_test/*.ml{,i}>: pkg_bigarray
 <lib_test/main.{native,byte}>: custom
 # OASIS_STOP
-<lib/activations.ml>: syntax_camlp4o, pkg_lwt.syntax
+<lib/unix_activations.ml>: syntax_camlp4o, pkg_lwt.syntax
