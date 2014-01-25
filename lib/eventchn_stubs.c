@@ -151,7 +151,10 @@ CAMLprim value stub_evtchn_unbind(value xce, value port)
 CAMLprim value stub_evtchn_pending(value xce)
 {
   CAMLparam1(xce);
+  CAMLlocal1(generation);
   evtchn_port_or_error_t port;
+
+  generation = caml_alloc_tuple(2);
 
   port = xc_evtchn_pending(_H(xce));
   if (port == -1)
@@ -160,7 +163,10 @@ CAMLprim value stub_evtchn_pending(value xce)
       caml_failwith(strerror(errno));
     }
 
-  CAMLreturn(Val_int(port));
+  Store_field(generation, 0, Val_int(0));
+  Store_field(generation, 1, Val_int(port));
+  
+  CAMLreturn(generation);
 }
 
 CAMLprim value stub_evtchn_unmask(value xce, value port)
