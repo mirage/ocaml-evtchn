@@ -2,3 +2,4 @@ trunk (unreleased)
 * import event channel code from mirage
 * fix segfault in calling 'pending' (OCaml type changed but C
   stub did not)
+* open at-most-one interface per process by caching the connection
