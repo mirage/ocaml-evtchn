@@ -17,8 +17,19 @@
 
 type handle
 
-external init: unit -> handle = "stub_evtchn_init"
-external close: handle -> int = "stub_evtchn_close"
+external init': unit -> handle = "stub_evtchn_init"
+external close': handle -> int = "stub_evtchn_close"
+
+let singleton_eventchn = ref None
+let init () = match !singleton_eventchn with
+  | Some e -> e
+  | None ->
+    let e = init' () in
+    singleton_eventchn := Some e;
+    e
+
+(* We'd rather leak connections than suffer use-after-free *)
+let close _ = 0
 
 type t = int Generation.t
 
