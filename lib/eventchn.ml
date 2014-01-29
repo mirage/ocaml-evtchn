@@ -24,9 +24,12 @@ let singleton_eventchn = ref None
 let init () = match !singleton_eventchn with
   | Some e -> e
   | None ->
-    let e = init' () in
-    singleton_eventchn := Some e;
-    e
+    try
+      let e = init' () in
+      singleton_eventchn := Some e;
+      e
+    with exn ->
+      failwith (Printf.sprintf "Failed to open event channel interface: %s" (Printexc.to_string exn))
 
 (* We'd rather leak connections than suffer use-after-free *)
 let close _ = 0
