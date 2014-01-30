@@ -1,3 +1,3 @@
-trunk (unreleased)
+1.0.0 (30-Jan-2014)
 * import event channel code from mirage
 * open at-most-one interface per process by caching the connection
