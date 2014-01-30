@@ -1,4 +1,4 @@
-OPAM_DEPENDS="ocamlfind lwt"
+OPAM_DEPENDS="ocamlfind lwt cmdliner"
 
 case "$OCAML_VERSION,$OPAM_VERSION" in
 3.12.1,1.0.0) ppa=avsm/ocaml312+opam10 ;;
@@ -22,9 +22,12 @@ opam --version
 opam --git-version
 
 opam init 
-depext=`opam install -e ubuntu $OPAM_DEPENDS`
-sudo apt-get install -qq $depext
-opam install ${OPAM_DEPENDS}
 eval `opam config env`
+opam install ${OPAM_DEPENDS}
+# build without xen
 make
-sudo make install
+
+# build with xen
+sudo apt-get install -qq libxen-dev
+make clean
+make

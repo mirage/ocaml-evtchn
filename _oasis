@@ -1,11 +1,15 @@
 OASISFormat: 0.3
 Name:        xen-evtchn
-Version:     0.9.8
+Version:     1.0.1
 Synopsis:    Xen event channel bindings
 Authors:     Vincent Hanquez, Anil Madhavapeddy, David Scott, Jonathan Ludlam
 License:     LGPL-2.1 with OCaml linking exception
 Plugins:     META (0.3)
 BuildTools:  ocamlbuild
+
+Flag xenctrl
+  Description:        build Unix userspace bindings
+  Default:            false
 
 Library xen_evtchn
   CompiledObject:     best
@@ -15,6 +19,7 @@ Library xen_evtchn
   BuildDepends:       unix, lwt, bigarray
 
 Library xen_evtchn_unix
+  Build$:             flag(xenctrl)
   CompiledObject:     best
   Path:               lib
   Findlibname:        unix
@@ -26,6 +31,7 @@ Library xen_evtchn_unix
   BuildDepends:       unix, lwt, lwt.unix, bigarray
 
 Library xen_evtchn_unix_activations
+  Build$:             flag(xenctrl)
   CompiledObject:     best
   Path:               lib
   Findlibname:        activations
@@ -34,7 +40,7 @@ Library xen_evtchn_unix_activations
   BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn.unix
 
 Executable linking
-  Build$:             flag(tests)
+  Build$:             flag(tests)&&flag(xenctrl)
   CompiledObject:     best
   Path:               lib_test
   MainIs:             main.ml
