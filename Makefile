@@ -5,12 +5,20 @@ J=4
 
 export OCAMLRUNPARAM=b
 
+include config.mk
+config.mk: configure
+	./configure
+
+configure: configure.ml
+	ocamlfind ocamlopt -package "cmdliner" -linkpkg $< -o $@
+	rm -f configure.c* configure.o
+
 setup.bin: setup.ml
 	@ocamlopt.opt -o $@ $< || ocamlopt -o $@ $< || ocamlc -o $@ $<
 	@rm -f setup.cmx setup.cmi setup.o setup.cmo
 
 setup.data: setup.bin
-	@./setup.bin -configure --enable-tests
+	@./setup.bin -configure --enable-tests $(ENABLE_XENCTRL)
 
 build: setup.data setup.bin
 	@./setup.bin -build -j $(J)
