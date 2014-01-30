@@ -54,7 +54,9 @@ let after evtchn counter =
   else Lwt.fail Generation.Invalid
 
 external fd: Eventchn.handle -> Unix.file_descr = "stub_evtchn_fd"
-external pending: Eventchn.handle -> Eventchn.t = "stub_evtchn_pending"
+external pending: Eventchn.handle -> int = "stub_evtchn_pending"
+
+let pending handle = Eventchn.of_int (pending handle)
 
 let event_cb = Array.init nr_events (fun _ -> Lwt_sequence.create ())
 
