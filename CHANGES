@@ -1,4 +1,5 @@
-trunk (unreleased)
+1.0.0 (30-Jan-2013):
 * import event channel code from mirage
 * fix segfault in calling 'pending' (OCaml type changed but C
   stub did not)
+* open at-most-one interface per process by caching the connection
