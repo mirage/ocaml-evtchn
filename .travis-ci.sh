@@ -28,7 +28,6 @@ opam install ${OPAM_DEPENDS}
 make
 
 # build with xen
-depext=`opam install -e ubuntu $OPAM_DEPENDS`
-sudo apt-get install -qq $depext
+sudo apt-get install -qq libxen-dev
 make clean
 make
