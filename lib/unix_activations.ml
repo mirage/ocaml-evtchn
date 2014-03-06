@@ -45,6 +45,7 @@ let dump () =
   done
 
 let after evtchn counter =
+  ignore(Eventchn.init ()); (* raise an exception if we have no event channels *)
   let port = Eventchn.to_int evtchn in
   lwt () = while_lwt ports.(port).counter <= counter && (Eventchn.is_valid evtchn) do
     Lwt_condition.wait ports.(port).c
@@ -59,6 +60,7 @@ external pending: Eventchn.handle -> Eventchn.t = "stub_evtchn_pending"
 let event_cb = Array.init nr_events (fun _ -> Lwt_sequence.create ())
 
 let wait port =
+  ignore(Eventchn.init ()); (* raise an exception if we have no event channels *)
   let th, u = Lwt.task () in
   let node = Lwt_sequence.add_r u event_cb.(Eventchn.to_int port) in
   Lwt.on_cancel th (fun _ -> Lwt_sequence.remove node);
@@ -86,7 +88,12 @@ let run_real xe =
     inner ()
   in inner ()
 
-let activations_thread = run_real (Eventchn.init ())
+let activations_thread =
+  try
+    run_real (Eventchn.init ())
+  with _ ->
+    (* Don't fail on application startup, fail explicit calls instead *)
+    Lwt.return ()
 
 (* Here for backwards compatibility *)
 let run _ = ()
