@@ -37,7 +37,7 @@ Library xen_evtchn_unix_activations
   Findlibname:        activations
   Findlibparent:      xen_evtchn_unix
   Modules:            Unix_activations 
-  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn.unix
+  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn.unix, xen-evtchn
 
 Executable linking
   Build$:             flag(tests)&&flag(xenctrl)
