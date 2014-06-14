@@ -1,3 +1,7 @@
+1.0.3 (14-Jun-2014)
+* xen-evtchn.unix package depends on xen-evtchn. This fixes linking problems
+  in downstream libraries.
+
 1.0.2 (13-Jun-2014)
 * suppress exceptions in top-level bindings thrown when not able to talk
   to xen. Now this exception will be thrown when the app actually tries to

@@ -28,7 +28,7 @@ Library xen_evtchn_unix
   CSources:           eventchn_stubs.c
   CCLib:              -L/usr/lib/xen-4.2/lib -lxenctrl
   CCOpt:              -Wno-unused-function -g -ggdb
-  BuildDepends:       unix, lwt, lwt.unix, bigarray
+  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn
 
 Library xen_evtchn_unix_activations
   Build$:             flag(xenctrl)
