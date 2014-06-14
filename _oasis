@@ -1,6 +1,6 @@
 OASISFormat: 0.3
 Name:        xen-evtchn
-Version:     1.0.2
+Version:     1.0.3
 Synopsis:    Xen event channel bindings
 Authors:     Vincent Hanquez, Anil Madhavapeddy, David Scott, Jonathan Ludlam
 License:     ISC
