@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 90f00bfd2d80fc40e850f66ea10cd58d)
+# DO NOT EDIT (digest: 44343185195923a011ac98f44072a2dd)
 version = "1.0.3"
 description = "Xen event channel bindings"
 requires = "unix lwt bigarray"
@@ -20,7 +20,7 @@ package "unix" (
  package "activations" (
   version = "1.0.3"
   description = "Xen event channel bindings"
-  requires = "unix lwt lwt.unix bigarray xen-evtchn.unix"
+  requires = "unix lwt lwt.unix bigarray xen-evtchn xen-evtchn.unix"
   archive(byte) = "xen_evtchn_unix_activations.cma"
   archive(byte, plugin) = "xen_evtchn_unix_activations.cma"
   archive(native) = "xen_evtchn_unix_activations.cmxa"
