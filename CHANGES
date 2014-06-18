@@ -1,3 +1,10 @@
+1.0.4 (18-Jun-2014)
+* this software is now officially part of the Mirage project
+* correct one file which hadn't got the ISC license header
+* standardise indenting (ocp-ident --syntax=lwt -i)
+* print a helpful error message if you haven't got the xen-evtchn module
+  loaded.
+
 1.0.3 (14-Jun-2014)
 * xen-evtchn.unix package depends on xen-evtchn. This fixes linking problems
   in downstream libraries.
