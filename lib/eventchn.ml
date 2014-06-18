@@ -21,6 +21,8 @@ external init': unit -> handle = "stub_evtchn_init"
 external close': handle -> int = "stub_evtchn_close"
 
 let singleton_eventchn = ref None
+let printed_error_already = ref false
+
 let init () = match !singleton_eventchn with
   | Some e -> e
   | None ->
@@ -28,7 +30,16 @@ let init () = match !singleton_eventchn with
       let e = init' () in
       singleton_eventchn := Some e;
       e
-    with exn ->
+    with Unix.Unix_error(Unix.ENOENT, _, _) as e ->
+      if not(!printed_error_already) then begin
+        printed_error_already := true;
+        Printf.fprintf stderr "Failed to open event channel interface: ENOENT\n";
+        Printf.fprintf stderr "Does this system have Xen userspace eventchannel support?\n";
+        Printf.fprintf stderr "On linux try:\n";
+        Printf.fprintf stderr "  sudo modprobe xen-evtchn\n%!";
+      end;
+      raise e
+    | exn ->
       failwith (Printf.sprintf "Failed to open event channel interface: %s" (Printexc.to_string exn))
 
 (* We'd rather leak connections than suffer use-after-free *)
