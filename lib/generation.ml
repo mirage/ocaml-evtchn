@@ -11,13 +11,13 @@
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- *)
+*)
 
 exception Invalid
 
 type 'a t = {
-	generation : int;
-	value : 'a
+  generation : int;
+  value : 'a
 }
 
 let generation = ref 0
