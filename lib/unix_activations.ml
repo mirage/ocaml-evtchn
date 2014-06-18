@@ -11,7 +11,7 @@
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- *)
+*)
 
 (* The high-level interface creates one counter per event channel port.
    Every time the system receives a notification it increments the counter.
@@ -48,8 +48,8 @@ let after evtchn counter =
   ignore(Eventchn.init ()); (* raise an exception if we have no event channels *)
   let port = Eventchn.to_int evtchn in
   lwt () = while_lwt ports.(port).counter <= counter && (Eventchn.is_valid evtchn) do
-    Lwt_condition.wait ports.(port).c
-  done in
+      Lwt_condition.wait ports.(port).c
+    done in
   if Eventchn.is_valid evtchn
   then Lwt.return ports.(port).counter
   else Lwt.fail Generation.Invalid
@@ -69,10 +69,10 @@ let wait port =
 let wake port =
   let port = Eventchn.to_int port in
   Lwt_sequence.iter_node_l (fun node ->
-    let u = Lwt_sequence.get node in
-    Lwt_sequence.remove node;
-    Lwt.wakeup_later u ();
-  ) event_cb.(port);
+      let u = Lwt_sequence.get node in
+      Lwt_sequence.remove node;
+      Lwt.wakeup_later u ();
+    ) event_cb.(port);
   ports.(port).counter <- ports.(port).counter + 1;
   Lwt_condition.broadcast ports.(port).c ()
 
