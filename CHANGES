@@ -1,3 +1,6 @@
+1.0.5 (19-Jun-2014)
+* Remove dependency on Unix which crept into 1.0.4
+
 1.0.4 (18-Jun-2014)
 * this software is now officially part of the Mirage project
 * correct one file which hadn't got the ISC license header
