@@ -30,7 +30,7 @@ let init () = match !singleton_eventchn with
       let e = init' () in
       singleton_eventchn := Some e;
       e
-    with Unix.Unix_error(Unix.ENOENT, _, _) as e ->
+    with e ->
       if not(!printed_error_already) then begin
         printed_error_already := true;
         Printf.fprintf stderr "Failed to open event channel interface: ENOENT\n";
@@ -39,8 +39,6 @@ let init () = match !singleton_eventchn with
         Printf.fprintf stderr "  sudo modprobe xen-evtchn\n%!";
       end;
       raise e
-    | exn ->
-      failwith (Printf.sprintf "Failed to open event channel interface: %s" (Printexc.to_string exn))
 
 (* We'd rather leak connections than suffer use-after-free *)
 let close _ = 0
