@@ -46,9 +46,10 @@ Executable linking
   MainIs:             main.ml
   Custom:             true
   Install:            false
+  NativeOpt:          -dontlink unix
   BuildDepends:       xen-evtchn, xen-evtchn.unix, xen-evtchn.unix.activations
 
 Test portable
-  Command:            ./linking.native
+  Command:            ./main.native
   Run:                true
 

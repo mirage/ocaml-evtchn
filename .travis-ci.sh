@@ -30,4 +30,6 @@ make
 # build with xen
 sudo apt-get install -qq libxen-dev
 make clean
+rm config.mk
 make
+make test

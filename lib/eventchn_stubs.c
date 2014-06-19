@@ -39,9 +39,6 @@
 
 xc_interface *global_xce = NULL;
 
-#define Nothing ((value) 0)
-extern void uerror(char *cmdname, value cmdarg);
-
 CAMLprim value stub_evtchn_init(value unit)
 {
   CAMLparam1(unit);
@@ -50,7 +47,7 @@ CAMLprim value stub_evtchn_init(value unit)
   }
 
   if (global_xce == NULL)
-    uerror("xc_evtchn_open", Nothing);
+    caml_failwith(strerror(errno));
 
   CAMLreturn((value)global_xce);
 }
