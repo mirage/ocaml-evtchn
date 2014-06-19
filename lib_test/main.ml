@@ -16,4 +16,9 @@
 (* Check the linking works *)
 
 let _ =
-  Printf.printf "OK\n%!"
+  try
+    (* Need to use the module or it might be optimised out *)
+    ignore(Eventchn.init ());
+    Printf.printf "OK (and you ran me as root on well-configured Xen host)\n%!"
+  with _ ->
+    Printf.printf "OK\n%!"
