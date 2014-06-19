@@ -30,7 +30,8 @@ install: setup.bin
 	@./setup.bin -install
 
 test: setup.bin build
-	@./setup.bin -test
+	./main.native
+	./test-linkage.sh
 
 reinstall: setup.bin
 	@ocamlfind remove xen-evtchn || true
