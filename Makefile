@@ -18,10 +18,10 @@ setup.bin: setup.ml
 	@rm -f setup.cmx setup.cmi setup.o setup.cmo
 
 setup.data: setup.bin
-	@./setup.bin -configure --enable-tests $(ENABLE_XENCTRL)
+	./setup.bin -configure --enable-tests $(ENABLE_XENCTRL)
 
 build: setup.data setup.bin
-	@./setup.bin -build -j $(J)
+	./setup.bin -build -j $(J) -classic-display
 
 doc: setup.data setup.bin
 	@./setup.bin -doc -j $(J)
@@ -30,7 +30,8 @@ install: setup.bin
 	@./setup.bin -install
 
 test: setup.bin build
-	@./setup.bin -test
+	ls -lR
+	./setup.bin -test
 
 reinstall: setup.bin
 	@ocamlfind remove xen-evtchn || true
