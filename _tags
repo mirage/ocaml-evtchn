@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: f8e056e4b95d42367fa9104c32b99bab)
+# DO NOT EDIT (digest: 8bc46547d26c35f6a52533927fed3dbc)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -39,6 +39,8 @@
 <lib/*.ml{,i}>: use_xen_evtchn
 <lib/*.ml{,i}>: use_xen_evtchn_unix
 # Executable linking
+<lib_test/main.{native,byte}>: oasis_executable_linking_native
+<lib_test/*.ml{,i}>: oasis_executable_linking_native
 <lib_test/main.{native,byte}>: pkg_bigarray
 <lib_test/main.{native,byte}>: pkg_lwt
 <lib_test/main.{native,byte}>: pkg_lwt.unix
