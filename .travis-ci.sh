@@ -31,3 +31,4 @@ make
 sudo apt-get install -qq libxen-dev
 make clean
 make
+make test
