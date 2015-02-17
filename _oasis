@@ -39,15 +39,14 @@ Library xen_evtchn_unix_activations
   Modules:            Unix_activations 
   BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn, xen-evtchn.unix
 
-Executable linking
+Executable test
   Build$:             flag(tests)&&flag(xenctrl)
   CompiledObject:     best
   Path:               lib_test
   MainIs:             main.ml
   Custom:             true
   Install:            false
-  NativeOpt:          -dontlink unix
-  BuildDepends:       xen-evtchn, xen-evtchn.unix, xen-evtchn.unix.activations
+  BuildDepends:       xen-evtchn, xen-evtchn.unix, xen-evtchn.unix.activations, oUnit, lwt.unix
 
 Test portable
   Command:            ./main.native

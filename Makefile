@@ -30,8 +30,7 @@ install: setup.bin
 	@./setup.bin -install
 
 test: setup.bin build
-	ls -lR
-	./setup.bin -test
+	sudo ./main.native -runner sequential
 
 reinstall: setup.bin
 	@ocamlfind remove xen-evtchn || true

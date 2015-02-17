@@ -13,12 +13,28 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 *)
 
-(* Check the linking works *)
+open Lwt
+open OUnit
+
+module Activations = Unix_activations
+
+let connect () =
+  let h = Eventchn.init () in
+  let listening = Eventchn.bind_unbound_port h 0 in
+  let connected = Eventchn.bind_interdomain h 0 (Eventchn.to_int listening) in
+  let t =
+    (* Without this notify the after will block. This checks
+       that the background thread is working. *)
+    Eventchn.notify h connected;
+    Activations.after listening Activations.program_start
+    >>= fun now ->
+    return () in
+  Lwt_main.run t
 
 let _ =
-  try
-    (* Need to use the module or it might be optimised out *)
-    ignore(Eventchn.init ());
-    Printf.printf "OK (and you ran me as root on well-configured Xen host)\n%!"
-  with _ ->
-    Printf.printf "OK\n%!"
+
+  let suite = "eventchn" >::: [
+    "connect" >:: connect;
+  ] in
+  OUnit2.run_test_tt_main (OUnit.ounit2_of_ounit1 suite)
+
