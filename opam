@@ -12,6 +12,7 @@ remove: [[make "uninstall"]]
 depends: [
   "ocamlfind"
   "lwt"
+  "camlp4"
   "cmdliner"
   "ounit"
 ]
