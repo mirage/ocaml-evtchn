@@ -1,3 +1,10 @@
+1.0.6 (17-Feb-2015)
+* Delay printing a scary message to when a client requests the Xen
+  event channels are actually used. This avoids printing it in all apps
+  compiled with conduit, used by cohttp.
+* Add unit test to check loopback connections work.
+* Add opam file.
+
 1.0.5 (19-Jun-2014)
 * Remove dependency on Unix which crept into 1.0.4
 
