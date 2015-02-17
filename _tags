@@ -1,8 +1,9 @@
 # OASIS_START
-# DO NOT EDIT (digest: 8bc46547d26c35f6a52533927fed3dbc)
+# DO NOT EDIT (digest: 4579ba46dc9018a25a81055dfdb520c1)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
+true: annot, bin_annot
 <**/.svn>: -traverse
 <**/.svn>: not_hygienic
 ".bzr": -traverse
@@ -17,7 +18,7 @@
 "lib/xen_evtchn.cmxs": use_xen_evtchn
 # Library xen_evtchn_unix
 "lib/xen_evtchn_unix.cmxs": use_xen_evtchn_unix
-<lib/*.ml{,i}>: oasis_library_xen_evtchn_unix_ccopt
+<lib/*.ml{,i,y}>: oasis_library_xen_evtchn_unix_ccopt
 "lib/eventchn_stubs.c": oasis_library_xen_evtchn_unix_ccopt
 <lib/xen_evtchn_unix.{cma,cmxa}>: oasis_library_xen_evtchn_unix_cclib
 "lib/libxen_evtchn_unix_stubs.lib": oasis_library_xen_evtchn_unix_cclib
@@ -32,29 +33,29 @@
 "lib/eventchn_stubs.c": use_xen_evtchn
 # Library xen_evtchn_unix_activations
 "lib/xen_evtchn_unix_activations.cmxs": use_xen_evtchn_unix_activations
-<lib/*.ml{,i}>: pkg_bigarray
-<lib/*.ml{,i}>: pkg_lwt
-<lib/*.ml{,i}>: pkg_lwt.unix
-<lib/*.ml{,i}>: pkg_unix
-<lib/*.ml{,i}>: use_xen_evtchn
-<lib/*.ml{,i}>: use_xen_evtchn_unix
-# Executable linking
-<lib_test/main.{native,byte}>: oasis_executable_linking_native
-<lib_test/*.ml{,i}>: oasis_executable_linking_native
+<lib/*.ml{,i,y}>: pkg_bigarray
+<lib/*.ml{,i,y}>: pkg_lwt
+<lib/*.ml{,i,y}>: pkg_lwt.unix
+<lib/*.ml{,i,y}>: pkg_unix
+<lib/*.ml{,i,y}>: use_xen_evtchn
+<lib/*.ml{,i,y}>: use_xen_evtchn_unix
+# Executable test
 <lib_test/main.{native,byte}>: pkg_bigarray
 <lib_test/main.{native,byte}>: pkg_lwt
 <lib_test/main.{native,byte}>: pkg_lwt.unix
+<lib_test/main.{native,byte}>: pkg_oUnit
 <lib_test/main.{native,byte}>: pkg_unix
 <lib_test/main.{native,byte}>: use_xen_evtchn
 <lib_test/main.{native,byte}>: use_xen_evtchn_unix
 <lib_test/main.{native,byte}>: use_xen_evtchn_unix_activations
-<lib_test/*.ml{,i}>: pkg_bigarray
-<lib_test/*.ml{,i}>: pkg_lwt
-<lib_test/*.ml{,i}>: pkg_lwt.unix
-<lib_test/*.ml{,i}>: pkg_unix
-<lib_test/*.ml{,i}>: use_xen_evtchn
-<lib_test/*.ml{,i}>: use_xen_evtchn_unix
-<lib_test/*.ml{,i}>: use_xen_evtchn_unix_activations
+<lib_test/*.ml{,i,y}>: pkg_bigarray
+<lib_test/*.ml{,i,y}>: pkg_lwt
+<lib_test/*.ml{,i,y}>: pkg_lwt.unix
+<lib_test/*.ml{,i,y}>: pkg_oUnit
+<lib_test/*.ml{,i,y}>: pkg_unix
+<lib_test/*.ml{,i,y}>: use_xen_evtchn
+<lib_test/*.ml{,i,y}>: use_xen_evtchn_unix
+<lib_test/*.ml{,i,y}>: use_xen_evtchn_unix_activations
 <lib_test/main.{native,byte}>: custom
 # OASIS_STOP
 <lib/unix_activations.ml>: syntax_camlp4o, pkg_lwt.syntax
