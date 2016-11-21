@@ -24,6 +24,8 @@
    wraps. Arguably if you have failed to notice 2bn (32-bit) wakeups then
    you have bigger problems. *)
 
+open Lwt.Infix
+
 let nr_events = 1024
 
 type event = int
