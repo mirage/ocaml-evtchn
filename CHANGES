@@ -1,3 +1,9 @@
+1.0.7 (21-Nov-2016)
+* Modernize the opam file
+* Modernize the travis configuration and test more distros
+* Remove dependency on lwt.syntax
+* Remove unnecessary depopt on xenctrl
+
 1.0.6 (17-Feb-2015)
 * Delay printing a scary message to when a client requests the Xen
   event channels are actually used. This avoids printing it in all apps
