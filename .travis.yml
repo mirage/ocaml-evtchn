@@ -10,6 +10,7 @@ env:
    - DEPOPTS="xenctrl"
    - PRE_INSTALL_HOOK="cd /home/opam/opam-repository && git pull origin master && opam update -u -y"
    - POST_INSTALL_HOOK="opam depext -ui mirage-xen"
+   - PINS="xen-gnt:https://github.com/mirage/ocaml-gnt.git#v2.2.3"
  matrix:
    - DISTRO=debian-stable OCAML_VERSION=4.01.0
    - DISTRO=debian-testing OCAML_VERSION=4.02.3
