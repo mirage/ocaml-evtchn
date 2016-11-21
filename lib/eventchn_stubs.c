@@ -23,6 +23,7 @@
 #include <sys/ioctl.h>
 #include <string.h>
 
+#define XC_WANT_COMPAT_EVTCHN_API
 #include <xenctrl.h>
 #include <xen/xen.h>
 #include <xen/sys/evtchn.h>
