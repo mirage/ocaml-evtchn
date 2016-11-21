@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 3484df99dd9ca2010065955fcf27569d)
+# DO NOT EDIT (digest: 4579ba46dc9018a25a81055dfdb520c1)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -35,7 +35,6 @@ true: annot, bin_annot
 "lib/xen_evtchn_unix_activations.cmxs": use_xen_evtchn_unix_activations
 <lib/*.ml{,i,y}>: pkg_bigarray
 <lib/*.ml{,i,y}>: pkg_lwt
-<lib/*.ml{,i,y}>: pkg_lwt.syntax
 <lib/*.ml{,i,y}>: pkg_lwt.unix
 <lib/*.ml{,i,y}>: pkg_unix
 <lib/*.ml{,i,y}>: use_xen_evtchn
@@ -43,7 +42,6 @@ true: annot, bin_annot
 # Executable test
 <lib_test/main.{native,byte}>: pkg_bigarray
 <lib_test/main.{native,byte}>: pkg_lwt
-<lib_test/main.{native,byte}>: pkg_lwt.syntax
 <lib_test/main.{native,byte}>: pkg_lwt.unix
 <lib_test/main.{native,byte}>: pkg_oUnit
 <lib_test/main.{native,byte}>: pkg_unix
@@ -52,7 +50,6 @@ true: annot, bin_annot
 <lib_test/main.{native,byte}>: use_xen_evtchn_unix_activations
 <lib_test/*.ml{,i,y}>: pkg_bigarray
 <lib_test/*.ml{,i,y}>: pkg_lwt
-<lib_test/*.ml{,i,y}>: pkg_lwt.syntax
 <lib_test/*.ml{,i,y}>: pkg_lwt.unix
 <lib_test/*.ml{,i,y}>: pkg_oUnit
 <lib_test/*.ml{,i,y}>: pkg_unix
