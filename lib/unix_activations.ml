@@ -64,7 +64,8 @@ let wake port =
 let run_real xe =
   let fd = Lwt_unix.of_unix_file_descr ~blocking:false ~set_flags:true (fd xe) in
   let rec inner () =
-    lwt () = Lwt_unix.wait_read fd in
+    Lwt_unix.wait_read fd
+    >>= fun () ->
     let port = pending xe in
     wake port;
     Eventchn.unmask xe port;
@@ -84,9 +85,14 @@ let after evtchn counter =
   (* This will print an error to stderr if we have no event channels *)
   start_activations_thread ();
   let port = Eventchn.to_int evtchn in
-  lwt () = while_lwt ports.(port).counter <= counter && (Eventchn.is_valid evtchn) do
+  let rec loop () =
+    if ports.(port).counter <= counter && (Eventchn.is_valid evtchn) then begin
       Lwt_condition.wait ports.(port).c
-    done in
+      >>= fun () ->
+      loop ()
+    end else Lwt.return_unit in
+  loop ()
+  >>= fun () ->
   if Eventchn.is_valid evtchn
   then Lwt.return ports.(port).counter
   else Lwt.fail Generation.Invalid
