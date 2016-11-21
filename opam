@@ -18,7 +18,6 @@ depends: [
   "cmdliner"
   "ounit"
 ]
-depopts: ["xenctrl"]
 depexts: [
   [["debian"] ["libxen-dev"]]
   [["ubuntu"] ["libxen-dev"]]
