@@ -1,6 +1,6 @@
 opam-version: "1.2"
 maintainer:   "dave@recoil.org"
-authors:      ["Dave Scott"]
+authors:      ["Vincent Hanquez" "Anil Madhavapeddy" "David Scott" "Jonathan Ludlam"]
 homepage:     "https://github.com/mirage/ocaml-evtchn"
 dev-repo:     "https://github.com/mirage/ocaml-evtchn.git"
 bug-reports:  "https://github.com/mirage/ocaml-evtchn/issues"
