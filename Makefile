@@ -2,6 +2,7 @@
 all: build
 
 J=4
+ENABLE_TESTS?=--disable-tests
 
 export OCAMLRUNPARAM=b
 
@@ -18,7 +19,7 @@ setup.bin: setup.ml
 	@rm -f setup.cmx setup.cmi setup.o setup.cmo
 
 setup.data: setup.bin
-	./setup.bin -configure --enable-tests $(ENABLE_XENCTRL)
+	./setup.bin -configure $(ENABLE_TESTS) $(ENABLE_XENCTRL)
 
 build: setup.data setup.bin
 	./setup.bin -build -j $(J) -classic-display
