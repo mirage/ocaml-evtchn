@@ -16,7 +16,7 @@ depends: [
   "ocamlbuild" {build}
   "lwt"
   "cmdliner"
-  "ounit"
+  "ounit"      {test}
 ]
 depexts: [
   [["debian"] ["libxen-dev"]]
