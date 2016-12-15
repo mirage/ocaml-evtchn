@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 0ab6551981ccebd2486c00b7eeb159d5) *)
+(* DO NOT EDIT (digest: 69a77aef12ade94c99419df6e4e4b814) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -888,10 +888,10 @@ let package_default =
           ("xen_evtchn_unix", ["lib"], []);
           ("xen_evtchn_unix_activations", ["lib"], [])
        ];
-     lib_c = [("xen_evtchn_unix", "lib", [])];
+     lib_c = [("xen_evtchn", "lib", [])];
      flags =
        [
-          (["oasis_library_xen_evtchn_unix_ccopt"; "compile"],
+          (["oasis_library_xen_evtchn_ccopt"; "compile"],
             [
                (OASISExpr.EBool true,
                  S
@@ -904,22 +904,10 @@ let package_default =
                       A "-ggdb"
                    ])
             ]);
-          (["oasis_library_xen_evtchn_unix_cclib"; "link"],
-            [
-               (OASISExpr.EBool true,
-                 S
-                   [
-                      A "-cclib";
-                      A "-L/usr/lib/xen-4.2/lib";
-                      A "-cclib";
-                      A "-lxenctrl"
-                   ])
-            ]);
-          (["oasis_library_xen_evtchn_unix_cclib"; "ocamlmklib"; "c"],
-            [
-               (OASISExpr.EBool true,
-                 S [A "-L/usr/lib/xen-4.2/lib"; A "-lxenctrl"])
-            ])
+          (["oasis_library_xen_evtchn_cclib"; "link"],
+            [(OASISExpr.EBool true, S [A "-cclib"; A "-lxenctrl"])]);
+          (["oasis_library_xen_evtchn_cclib"; "ocamlmklib"; "c"],
+            [(OASISExpr.EBool true, S [A "-lxenctrl"])])
        ];
      includes = [("lib_test", ["lib"])]
   }
@@ -929,6 +917,6 @@ let conf = {MyOCamlbuildFindlib.no_automatic_syntax = false}
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default conf package_default;;
 
-# 933 "myocamlbuild.ml"
+# 921 "myocamlbuild.ml"
 (* OASIS_STOP *)
 Ocamlbuild_plugin.dispatch dispatch_default;;

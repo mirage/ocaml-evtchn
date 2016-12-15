@@ -16,6 +16,9 @@ Library xen_evtchn
   Path:               lib
   Findlibname:        xen-evtchn
   Modules:            Eventchn, Generation
+  CSources:           eventchn_stubs.c
+  CCLib:              -lxenctrl
+  CCOpt:              -Wno-unused-function -g -ggdb
   BuildDepends:       unix, lwt, bigarray
 
 Library xen_evtchn_unix
@@ -25,9 +28,6 @@ Library xen_evtchn_unix
   Findlibname:        unix
   Findlibparent:      xen_evtchn
   Modules:            Eventchn_dummy # to convince the build tools to make the package
-  CSources:           eventchn_stubs.c
-  CCLib:              -L/usr/lib/xen-4.2/lib -lxenctrl
-  CCOpt:              -Wno-unused-function -g -ggdb
   BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn
 
 Library xen_evtchn_unix_activations
