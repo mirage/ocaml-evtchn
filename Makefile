@@ -13,5 +13,9 @@ install:
 uninstall:
 	jbuilder uninstall
 
+.PHONY: docker
+docker:
+	docker build -t xen-gnt .
+
 clean:
 	rm -rf _build
