@@ -6,22 +6,16 @@ dev-repo:     "https://github.com/mirage/ocaml-evtchn.git"
 bug-reports:  "https://github.com/mirage/ocaml-evtchn/issues"
 tags:         ["org:mirage" "org:xapi-project"]
 
-build:   [make]
-build-test: [make "ENABLE_TESTS=--enable-tests"]
-install: [make "install"]
-remove:  [make "uninstall"]
+build: [
+  [ "jbuilder" "subst"] {pinned}
+  [ "jbuilder" "build" "-p" name "-j" jobs ]
+]
 
 depends: [
-  "ocamlfind"  {build}
-  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "jbuilder"  {build & >="1.0+beta9"}
   "lwt"
   "cmdliner"
-  "ounit"      {test}
-]
-depexts: [
-  [["debian"] ["libxen-dev"]]
-  [["ubuntu"] ["libxen-dev"]]
-  [["archlinux"] ["xenstore"]]
 ]
 
 available: [ocaml-version >= "4.00.0"]

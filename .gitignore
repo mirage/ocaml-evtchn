@@ -7,9 +7,10 @@
 *.cmx
 *.cmxs
 *.cmxa
-_build
-setup.bin
-setup.log
-setup.data
-main.native
 *.swp
+*.native
+*.byte
+_build
+api.docdir
+*.merlin
+*.install
