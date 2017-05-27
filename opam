@@ -21,6 +21,7 @@ depends: [
 depexts: [
   [["debian"] ["libxen-dev"]]
   [["ubuntu"] ["libxen-dev"]]
+  [["archlinux"] ["xenstore"]]
 ]
 
 available: [ocaml-version >= "4.00.0"]
