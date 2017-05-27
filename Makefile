@@ -40,6 +40,10 @@ reinstall: setup.bin
 uninstall:
 	@ocamlfind remove xen-evtchn || true
 
+.PHONY: docker
+docker:
+	docker build -t xen-gnt .
+
 clean:
 	@ocamlbuild -clean
 	@rm -f setup.data setup.log setup.bin
