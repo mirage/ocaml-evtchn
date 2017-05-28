@@ -53,13 +53,6 @@ CAMLprim value stub_evtchn_init(value unit)
   CAMLreturn((value)global_xce);
 }
 
-CAMLprim value stub_evtchn_close(value xce)
-{
-/*  return Val_int(xc_evtchn_close(_H(xce))); */
-/* We don't ever actually want to do this */
-  return(Val_int(0));
-}
-
 CAMLprim value stub_evtchn_fd(value xce)
 {
   CAMLparam1(xce);
