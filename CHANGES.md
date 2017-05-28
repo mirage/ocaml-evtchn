@@ -1,3 +1,10 @@
+## 2.0.0 (27-May-2017)
+* Change ocamlfind and opam package structure
+  - xen-evtchn: same as before
+  - xen-evtchn-unix: the package formerly known as xen-evtchn.unix
+* Add Mirage ISC LICENSE.md
+* Add archlinux deps
+
 ## 1.0.7 (21-Nov-2016)
 * Modernize the opam file
 * Modernize the travis configuration and test more distros
