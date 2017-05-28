@@ -18,7 +18,6 @@
 type handle
 
 external init': unit -> handle = "stub_evtchn_init"
-external close': handle -> int = "stub_evtchn_close"
 
 let singleton_eventchn = ref None
 let printed_error_already = ref false
