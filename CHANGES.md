@@ -1,3 +1,8 @@
+## v2.1.0
+* Port to dune from jbuilder (@avsm)
+* Use `lwt-dllist` instead of deprecated `Lwt_sequence` (@avsm)
+* Upgrade opam metadata to 2.0 format (@avsm)
+
 ## 2.0.0 (2017-05-27):
 * Change ocamlfind and opam package structure
   - xen-evtchn: same as before
