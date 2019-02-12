@@ -42,7 +42,7 @@ external pending: Eventchn.handle -> Eventchn.t = "stub_evtchn_pending"
 
 let ports = Array.init nr_events (fun _ -> { counter = program_start; c = Lwt_condition.create () })
 
-let event_cb = Array.init nr_events (fun _ -> Lwt_sequence.create ())
+let event_cb = Array.init nr_events (fun _ -> Lwt_dllist.create ())
 
 let dump () =
   Printf.printf "Number of received event channel events:\n";
@@ -53,9 +53,9 @@ let dump () =
 
 let wake port =
   let port = Eventchn.to_int port in
-  Lwt_sequence.iter_node_l (fun node ->
-      let u = Lwt_sequence.get node in
-      Lwt_sequence.remove node;
+  Lwt_dllist.iter_node_l (fun node ->
+      let u = Lwt_dllist.get node in
+      Lwt_dllist.remove node;
       Lwt.wakeup_later u ();
     ) event_cb.(port);
   ports.(port).counter <- ports.(port).counter + 1;
@@ -103,8 +103,8 @@ let wait port =
   (* This will print an error to stderr if we have no event channels *)
   start_activations_thread ();
   let th, u = Lwt.task () in
-  let node = Lwt_sequence.add_r u event_cb.(Eventchn.to_int port) in
-  Lwt.on_cancel th (fun _ -> Lwt_sequence.remove node);
+  let node = Lwt_dllist.add_r u event_cb.(Eventchn.to_int port) in
+  Lwt.on_cancel th (fun _ -> Lwt_dllist.remove node);
   th
 
 (* Here for backwards compatibility *)
