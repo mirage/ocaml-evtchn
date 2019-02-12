@@ -12,8 +12,7 @@ env:
    - PINS="xen-evtchn:."
  matrix:
    - DISTRO=debian-stable OCAML_VERSION=4.07
-   - DISTRO=ubuntu OCAML_VERSION=4.05
    - DISTRO=ubuntu-lts OCAML_VERSION=4.06
-   - DISTRO=opensuse OCAML_VERSION=4.05
+   - DISTRO=ubuntu OCAML_VERSION=4.05
    - DISTRO=fedora OCAML_VERSION=4.04
    - DISTRO=alpine OCAML_VERSION=4.03
