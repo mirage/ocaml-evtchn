@@ -11,6 +11,7 @@ depends: [
   "ocamlfind" {build}
   "dune" {build & >= "1.0"}
   "lwt"
+  "lwt-dllist"
   "cmdliner"
 ]
 build: [
