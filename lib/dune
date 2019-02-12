@@ -1,7 +1,7 @@
 (library
  (name xen_evtchn)
  (public_name xen-evtchn)
- (libraries unix bigarray lwt lwt-dllist)
+ (libraries lwt lwt-dllist)
  (modules Eventchn Generation)
  (wrapped false))
 
