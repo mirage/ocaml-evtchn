@@ -4,6 +4,7 @@
 
 (alias
  (name runtest)
+ (package xen-evtchn-unix)
  (deps
   (:< main.exe))
  (action
