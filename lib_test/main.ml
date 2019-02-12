@@ -27,7 +27,7 @@ let connect () =
        that the background thread is working. *)
     Eventchn.notify h connected;
     Activations.after listening Activations.program_start
-    >>= fun now ->
+    >>= fun _now ->
     return () in
   Lwt_main.run t
 

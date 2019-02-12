@@ -1,4 +1,4 @@
-## v2.1.0
+## v2.1.0 (2019-02-12)
 * Port to dune from jbuilder (@avsm)
 * Use `lwt-dllist` instead of deprecated `Lwt_sequence` (@avsm)
 * Upgrade opam metadata to 2.0 format (@avsm)

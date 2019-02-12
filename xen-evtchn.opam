@@ -7,8 +7,7 @@ tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-evtchn"
 bug-reports: "https://github.com/mirage/ocaml-evtchn/issues"
 depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind" {build}
+  "ocaml" {>= "4.03.0"}
   "dune" {build & >= "1.0"}
   "lwt"
   "lwt-dllist"
