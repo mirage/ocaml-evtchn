@@ -5,6 +5,7 @@ authors: [
 ]
 tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-evtchn"
+doc: "https://mirage.github.io/ocaml-evtchn/"
 bug-reports: "https://github.com/mirage/ocaml-evtchn/issues"
 depends: [
   "ocaml" {>= "4.03.0"}
