@@ -26,6 +26,7 @@ depexts: [
   ["libxen-dev"] {os-distribution = "ubuntu"}
   ["xen-devel"] {os-distribution = "centos"}
   ["xen-devel"] {os-distribution = "fedora"}
+  ["xen-devel"] {os-family = "suse"}
   ["xenstore"] {os-distribution = "archlinux"}
 ]
 dev-repo: "git+https://github.com/mirage/ocaml-evtchn.git"
