@@ -8,15 +8,16 @@ homepage: "https://github.com/mirage/ocaml-evtchn"
 doc: "https://mirage.github.io/ocaml-evtchn/"
 bug-reports: "https://github.com/mirage/ocaml-evtchn/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
+  "ocaml" {>= "4.08.0"}
   "dune" {>= "1.0"}
   "lwt"
   "lwt-dllist"
   "cmdliner"
 ]
 build: [
-  ["dune" "subst"] {pinned}
+  ["dune" "subst"] {dev}
   ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
 dev-repo: "git+https://github.com/mirage/ocaml-evtchn.git"
 synopsis: "Xen event channel interface for MirageOS"

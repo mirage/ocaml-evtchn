@@ -8,18 +8,20 @@ homepage: "https://github.com/mirage/ocaml-evtchn"
 bug-reports: "https://github.com/mirage/ocaml-evtchn/issues"
 doc: "https://mirage.github.io/ocaml-evtchn/"
 depends: [
-  "ocaml" {>= "4.03.0"}
+  "ocaml" {>= "4.08.0"}
   "dune" {>= "1.0"}
-  "xen-evtchn" {>="2.0.0"}
+  "xen-evtchn" {=version}
   "lwt-dllist"
   "lwt"
   "cmdliner"
   "ounit" {with-test}
-  "conf-xen" {build}
+  "conf-xen"
 ]
+available: [ arch != "s390x" & arch != "ppc64" ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
 dev-repo: "git+https://github.com/mirage/ocaml-evtchn.git"
 synopsis: "Xen event channel interface for Linux"
