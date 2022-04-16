@@ -14,7 +14,7 @@ depends: [
   "lwt-dllist"
   "lwt"
   "cmdliner"
-  "ounit" {with-test}
+  "ounit2" {with-test}
   "conf-xen" {build}
 ]
 build: [
