@@ -1,6 +1,6 @@
 (executables
  (names main)
- (libraries xen-evtchn xen-evtchn-unix oUnit lwt.unix))
+ (libraries xen-evtchn xen-evtchn-unix ounit2 lwt.unix))
 
 (alias
  (name runtest)
