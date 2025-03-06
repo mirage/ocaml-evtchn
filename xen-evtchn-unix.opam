@@ -29,3 +29,4 @@ when data (or space) is available for processing. This implementation
 is a binding to a set of libxc functions which access `/dev/xen/evtchn`
 for userspace.
 """
+x-maintenance-intent: [ "(latest)" ]
