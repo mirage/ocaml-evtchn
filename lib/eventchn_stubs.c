@@ -38,7 +38,7 @@
 
 #define _H(__h) ((xc_evtchn *)(__h))
 
-xc_interface *global_xce = NULL;
+xc_evtchn *global_xce = NULL;
 
 CAMLprim value stub_evtchn_init(value unit)
 {
